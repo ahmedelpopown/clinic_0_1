@@ -15,12 +15,12 @@ class DoctrControllerS extends Controller
      */
     public function __invoke(Request $request)
     {
-      // $doctors = doctors::orderBy('id', 'desc')->limit(2)->get();
       $doctors = doctors::orderBy('id', 'desc')->get();
+  
       $majors = majors::get();
-
+ 
          
-               return view('web.site.pages.doctors.index',compact('doctors','majors'));
+               return view('web.site.pages.doctors.index',compact('doctors'));
  
 
     }

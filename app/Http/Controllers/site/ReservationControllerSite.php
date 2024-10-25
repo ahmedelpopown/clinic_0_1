@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\site;
 
-use App\Http\Requests\ReservationRequest;
-use App\Models\doctors;
-use App\Models\majors;
-use App\Models\reservations;
-use Illuminate\Http\Request;
-use Redirect;
+  use App\Http\Controllers\Controller;
+ use App\Http\Requests\ReservationRequest;
+ 
+ 
+  
+ use App\Models\doctors;
+ use App\Models\reservations;
+ use Request;
 
 class ReservationControllerSite extends Controller
 {
@@ -33,15 +35,9 @@ class ReservationControllerSite extends Controller
     public function store(ReservationRequest $request     ) 
     {
          
-        // dd($request->all() );
-        // $doctor = doctors::find($id);
-    // if (!$doctor) {
-        // return Redirect()->back();
-    // }
-
+ 
     $data=$request->validated();
-    //    dd($data);
-        // $id = doctors::find($id);
+  
 
     reservations::create($data);
 

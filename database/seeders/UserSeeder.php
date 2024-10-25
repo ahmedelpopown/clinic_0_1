@@ -14,20 +14,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
-             
-                 ])     ;
-                 $email = 'admin@app.com';
-                 $existingUser = User::where('email', $email)->first();
-                 
-                 if (!$existingUser) {
-                    User::factory()->count(25)->create() ;
+        $email = 'admin@app.com';
+        $existingUser = User::where('email', $email)->first();
+        if (!$existingUser) {
+            \App\Models\User::factory()->count(25)->create();
+        }
 
-                 }
-             }
-                
+ 
+
+
     }
- 
-             
-    
- 
+
+}
+
+
+
+

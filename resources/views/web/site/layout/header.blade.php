@@ -18,8 +18,18 @@
                 <a type="button" class="btn btn-outline-light navigation--button" href="{{route("doctors")}}">Doctors</a>
 
 
-                <a type="button" class="btn btn-outline-light navigation--button" href="{{route("login")}}">login</a>
+@if (auth()->check())
+<form action="{{route('logout')}}" method="POST">
+@csrf 
 
+<button class="btn btn-danger"> LogOut</button>
+
+</form>
+@else
+<a type="button" class="btn btn-outline-light navigation--button" href="{{route("login.show")}}">login</a>
+
+@endif
+ 
  
             </div>
         </div>

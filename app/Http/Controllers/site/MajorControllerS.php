@@ -18,9 +18,9 @@ class MajorControllerS extends Controller
       // $doctors = doctors::orderBy('id', 'desc')->limit(2)->get();
       $majors = majors::orderBy('id', 'desc')->get();
 
-         
+   
                return view('web.site.pages.majors.index',compact('majors'));
  
-
-    }
+     }
 }
+

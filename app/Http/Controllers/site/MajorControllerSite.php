@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\site;
+use App\Http\Controllers\Controller;
 
-use App\Http\Requests\doctorsRequest;
+ use App\Http\Requests\doctorsRequest;
 use App\Models\doctors;
 use App\Models\majors;
-use Illuminate\Http\Request;
-
-class DoctorsController extends Controller
+use Request;
+ 
+class MajorControllerSite extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $doctors = doctors::orderBy('id', 'desc')->get();
-        $majors = majors::get();
+        $majors = majors::orderBy('id', 'desc')->get();
+
+         dd($majors);
         
-        // dd($doctors, $majors);
         
-        return view('web.admin.sections.doctors.index', compact('doctors'));
+        return view('web.site.pages.majors.index', compact('majors'));
         
     }
 
