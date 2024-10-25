@@ -9,12 +9,15 @@ use App\Http\Controllers\admin\HomeControllerAdmin;
 use App\Http\Controllers\admin\MajorsControllerAdmin;
   use App\Http\Controllers\MailController;
  use App\Http\Controllers\OrderController;
- use App\Http\Controllers\site\auth\LogoutControllerSite;
+ use App\Http\Controllers\site\auth\LoginControllerSite;
+use App\Http\Controllers\site\auth\LogoutControllerSite;
 use App\Http\Controllers\site\DoctrControllerS;
 use App\Http\Controllers\site\HomeControllerSite;
  use App\Http\Controllers\site\MajorControllerS;
+use App\Http\Controllers\site\RegisterController;
 use App\Http\Controllers\site\ReservationControllerSite;
-use App\Http\Controllers\site\RigsterController;
+ 
+use App\Http\Controllers\site\TestG;
 use App\Models\doctors;
 use App\Models\majors;
 use App\Models\reservations;
@@ -51,19 +54,27 @@ Route::prefix('clinic')->group(function () {
 
     Route::get('/doctors', DoctrControllerS::class)->name('doctors');
 
-    Route::get('/register', [RigsterController::class, 'show'])->name('register.show');
+    Route::get('/register', [RegisterController::class, 'show'])->name('register.show');
 
-    Route::post('/register', [RigsterController::class, 'register'])->name('register.store');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
+
+    Route::get('/login', [TestG::class, 'index'])->name('login.index');
+    Route::post('/login', [TestG::class, 'show'])->name('login.show');
 
 
     Route::resource('/reservation', ReservationControllerSite::class);
-    // Route::get('/login', [\App\Http\Controllers\site\auth\LoginControllerSite::class, 'show'])->name('login.show');
-    Route::get('/login', [\App\Http\Controllers\site\auth\LoginControllerSite::class, 'show'])->name('login.show');
+
     Route::post('/logout', LogoutControllerSite::class)->name('logout');
 
 
 
 
+
+    // Route::get('/login', [\App\Http\Controllers\site\auth\LoginControllerSite::class, 'show'])->name('login.show');
+     
+    // Route::get('/login', [LoginControllerSite::class, 'show'])->name('login.show');
+
+    // Route::get('/login', [LoginControllerSite::class, 'authenticate'])->name('login.authenticate');
 
 
     // Route::get('/login', function () {
@@ -134,3 +145,7 @@ Route::get('/one-to-many', function () {
     return dd('success');
 
 });
+
+// Route::get('/test_g', [TestG::class, 'index'])->name('test_g.index');
+
+// Route::get('/test_g', [TestG::class, 'form'])->name('test_g.form');

@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\site\RigsterRequest;
+use App\Http\Requests\site\RegisterRequest;
 use App\Models\User;
 use Auth;
 use Hash;
+use Register;
 use Illuminate\Http\RedirectResponse;
  
 
-class RigsterController extends Controller
+class RegisterController extends Controller
 {
    public function show()
    {
       return view('web.site.auth.register');
    }
 
-   public function register(RigsterRequest $request): RedirectResponse
+   public function register(RegisterRequest $request): RedirectResponse
    {
       $data = $request->validated();
       // dd($data);

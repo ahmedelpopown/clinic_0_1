@@ -4,7 +4,7 @@ namespace App\Http\Requests\site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RigsterRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class RigsterRequest extends FormRequest
         'name'=>'required|string|min:3|max:255',
         'email'=>'required',
         'phone'=>'nullable',
-        'password'=>'required|string|min:6',
+        'password' => 'required|confirmed|min:6',
+        'password_confirmation' => 'required',
         'type'=>'required|string|in:doctor,Patient',
         ];
     }
