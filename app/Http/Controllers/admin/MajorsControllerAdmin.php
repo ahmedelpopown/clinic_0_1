@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\majorRequest;
-use App\Models\majors;
+ use App\Models\Majors;
 use Gate;
 use Illuminate\Http\Request;
 use Storage;
@@ -18,7 +18,7 @@ class MajorsControllerAdmin extends Controller
     {
         abort_if(Gate::denies('isAdmin'),403);
         // dd();
-        $majors=majors::orderBy('id','desc')->get();
+        $majors=Majors::orderBy('id','desc')->get();
 
         return view('web.admin.sections.majors.index',compact('majors'));
     }

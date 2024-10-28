@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 
  use App\Http\Requests\doctorsRequest;
 use App\Models\doctors;
-use App\Models\majors;
-use Request;
+ use App\Models\Majors;
+ use Request;
  
 class MajorControllerSite extends Controller
 {
@@ -15,12 +15,19 @@ class MajorControllerSite extends Controller
      */
     public function index()
     {
-        $majors = majors::orderBy('id', 'desc')->get();
+        // $majors = majors::orderBy('id', 'desc')->get();
 
-         dd($majors);
+        //  dd($majors); 
         
+        $majors=Majors::get();
         
-        return view('web.site.pages.majors.index', compact('majors'));
+        response()->json([
+            'success'=>true,
+            'message'=>'data Retrieved successfully',
+            'data'=>$majors
+         ])  ;
+         return   view('web.site.pages.majors.index', compact('majors'));
+       
         
     }
 
@@ -41,8 +48,8 @@ class MajorControllerSite extends Controller
     public function store(doctorsRequest $request )
     {
         $data=$request->validated();
-
-    //  dd($data);
+      
+     dd($data);
      if($request->hasFile('image')){
 
         $file = $request->file('image');
@@ -52,7 +59,12 @@ class MajorControllerSite extends Controller
         $data['image'] = 'storage/'. $fileName;
     }
     
-    doctors::create($data);
+    // doctors::create($data);
+    // return response()->json([
+    //     'success'=>true,
+    //     'message'=>'data Retrieved successfully',
+    //     'data'=>$data
+    //  ])  ;
     return redirect()->route('admin.doctors.index') ;
 
 

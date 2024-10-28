@@ -23,7 +23,7 @@ class ReservationRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'Phone' => 'required|string|max:20',
+            'Phone' => ' string|max:20',
             'email' => 'required|max:255',
             'id_doctor' => 'required',
 

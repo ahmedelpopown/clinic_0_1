@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class majors extends Model
 {
+    // 38
     use HasFactory;
-    protected $fillable =['name','image'];
+    protected $table = 'majors'; 
+    protected $primaryKey = 'id';  
+    public $timestamps = true;
+
     public function doctors()
     {
         return $this->belongsTo(doctors::class);

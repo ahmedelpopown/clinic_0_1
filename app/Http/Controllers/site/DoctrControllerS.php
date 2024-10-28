@@ -4,7 +4,7 @@ namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
 use App\Models\doctors;
-use App\Models\majors;
+ use App\Models\Majors;
 use Illuminate\Http\Request;
 use Route;
 
@@ -17,7 +17,7 @@ class DoctrControllerS extends Controller
     {
       $doctors = doctors::orderBy('id', 'desc')->get();
   
-      $majors = majors::get();
+      $majors = Majors::get();
  
          
                return view('web.site.pages.doctors.index',compact('doctors'));

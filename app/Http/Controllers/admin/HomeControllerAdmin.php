@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\majors;
-use Illuminate\Http\Request;
+ use App\Models\Majors;
+ use Illuminate\Http\Request;
 
 class HomeControllerAdmin extends Controller
 {
@@ -13,7 +13,7 @@ class HomeControllerAdmin extends Controller
      */
     public function __invoke(Request $request)
     {
-      $majors=  majors::orderBy('id','desc')->get();
+      $majors=  Majors::orderBy('id','desc')->get();
         return view('web.admin.pages.dashboard');
     }
 }

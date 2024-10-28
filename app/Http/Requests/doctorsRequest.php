@@ -23,11 +23,11 @@ class doctorsRequest extends FormRequest
     {
         return [
        
-                'name' => 'required|string|max:255',
+                'name' => 'required|string|min:3|max:255',
                 'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
                 'id_major' => 'required|integer',
         
-            
+        
            
         ];
     }

@@ -7,8 +7,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Requests\doctorsRequest;
 use App\Models\doctors;
  
-use App\Models\majors;
-use Request;
+ use App\Models\Majors;
+ use Request;
  
 
 class DoctorsController extends Controller
@@ -19,7 +19,7 @@ class DoctorsController extends Controller
     public function index()
     {
         $doctors = doctors::orderBy('id', 'desc')->get();
-        $majors = majors::get();
+        $majors = Majors::get();
         
         // dd($doctors, $majors);
         

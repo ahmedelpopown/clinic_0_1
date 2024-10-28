@@ -4,7 +4,8 @@ namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
 use App\Models\doctors;
-use App\Models\majors;
+ 
+use App\Models\Majors;
 use Illuminate\Http\Request;
 use Route;
 
@@ -16,7 +17,7 @@ class HomeControllerSite extends Controller
     public function __invoke(Request $request)
     {
       $doctors = doctors::orderBy('id', 'desc')->limit(2)->get();
-      $majors = majors::orderBy('id', 'desc')->get();
+      $majors = Majors::orderBy('id', 'desc')->get();
 
          
                return view('web.site.pages.home.index',compact('doctors','majors'));

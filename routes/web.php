@@ -7,7 +7,8 @@ use App\Http\Controllers\admin\auth\LoginControllerAdmin;
 use App\Http\Controllers\admin\DoctorsController;
 use App\Http\Controllers\admin\HomeControllerAdmin;
 use App\Http\Controllers\admin\MajorsControllerAdmin;
-  use App\Http\Controllers\MailController;
+  use App\Http\Controllers\API\categoryController;
+use App\Http\Controllers\MailController;
  use App\Http\Controllers\OrderController;
  use App\Http\Controllers\site\auth\LoginControllerSite;
 use App\Http\Controllers\site\auth\LogoutControllerSite;
@@ -19,7 +20,7 @@ use App\Http\Controllers\site\ReservationControllerSite;
  
 use App\Http\Controllers\site\TestG;
 use App\Models\doctors;
-use App\Models\majors;
+ use App\Models\majors;
 use App\Models\reservations;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +49,7 @@ Route::get('/create', function () {
 
 
 Route::prefix('clinic')->group(function () {
-
+ 
     Route::get('/home', HomeControllerSite::class)->name('home');
     Route::get('/majors', MajorControllerS::class)->name('majors')->middleware('auth');
 
@@ -131,8 +132,7 @@ Route::get('/one-to-many', function () {
 
     ]);
     $major->doctors()->associate($major->id)->save();
-
-
+ 
     $reservations = reservations::make([
         'name' => 'nameee',
         'phone' => '0112050200',
@@ -146,6 +146,10 @@ Route::get('/one-to-many', function () {
 
 });
 
+Route::apiResource('update',categoryController::class);
+
 // Route::get('/test_g', [TestG::class, 'index'])->name('test_g.index');
 
 // Route::get('/test_g', [TestG::class, 'form'])->name('test_g.form');
+
+Route::apiResource('majors',categoryController::class);
